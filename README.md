@@ -1,7 +1,3 @@
-Sure! Here’s the updated README with the corrected project structure:
-
----
-
 # Real-time Chat Application
 
 This is a simple real-time chat application where users can join different chat rooms or create their own. Users can send and receive messages in real-time, see the list of active users in each chat room, and optionally use private messaging or message history features. The project demonstrates the use of various design patterns, such as Observer, Singleton, and Adapter, while focusing on object-oriented principles.
@@ -131,10 +127,3 @@ ChatApplication
 - No authentication mechanism is in place, so any user can join any room by simply entering a room ID.
 - The current message history is not persistent after restarting the server.
 
-## License
-
-This project is open-source and free to use under the [MIT License](LICENSE).
-
----
-
-Feel free to further modify the README to fit your preferences or any specific details related to your project!
