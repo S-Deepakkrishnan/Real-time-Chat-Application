@@ -38,3 +38,79 @@ This is a simple real-time chat application where users can join different chat 
 2. Compile the server:
    ```bash
    javac ChatServer.java
+
+Start the server:
+bash
+Copy code
+java ChatServer
+The server will start listening for client connections on port 12345 by default.
+Client
+Open a second terminal for each client.
+Compile the client:
+bash
+Copy code
+javac ChatClient.java
+Run the client:
+bash
+Copy code
+java ChatClient
+When prompted, enter a username and the room ID you wish to create/join.
+Example Interaction
+Terminal 1 (Server)
+
+bash
+Copy code
+java ChatServer
+Chat Server started on port 12345
+New client connected.
+New client connected.
+Terminal 2 (Client 1 - Alice)
+
+bash
+Copy code
+java ChatClient
+Enter your username: Alice
+Enter room ID to create/join: Room123
+Server: Alice joined the room.
+Server: Active users in room Room123: Alice
+Alice, enter your message (or type 'exit' to leave the room): Hello, everyone!
+Server: [Alice]: Hello, everyone!
+Terminal 3 (Client 2 - Bob)
+
+bash
+Copy code
+java ChatClient
+Enter your username: Bob
+Enter room ID to create/join: Room123
+Server: Bob joined the room.
+Server: Active users in room Room123: Alice, Bob
+Bob, enter your message (or type 'exit' to leave the room): How's it going?
+Server: [Bob]: How's it going?
+Project Structure
+arduino
+Copy code
+ChatApplication
+└── Chat
+    ├── ChatServer.java           // Manages the chat rooms and clients
+    ├── ChatClient.java           // Handles the client-side operations
+    ├── ChatRoom.java             // Represents the chat rooms
+    ├── ClientHandler.java         // Manages each client's connection and messages
+    └── README.md                 // Detailed project documentation
+Code Explanation
+ChatServer.java: Handles multiple clients by listening for incoming connections. Each client is assigned to a separate thread.
+ChatClient.java: Allows users to join a chat room and send/receive messages in real-time.
+ChatRoom.java: Manages the chat room, keeps track of active users, and handles broadcasting messages to all users.
+ClientHandler.java: Handles the interaction between the client and server, including message forwarding, user join/leave notifications, etc.
+Design Considerations
+Observer Pattern: Used to notify all clients in the room about new messages or user activities (joining/leaving).
+Singleton Pattern: Ensures that each chat room is created once and only one instance of it exists throughout the application.
+Adapter Pattern: Could be extended to support different communication protocols (e.g., WebSockets or HTTP).
+Future Enhancements
+Implement a private messaging feature between users.
+Add message history so that users can see past conversations when they rejoin a chat room.
+Extend the Adapter Pattern to support WebSocket communication.
+Implement user authentication and more robust security.
+Known Issues
+No authentication mechanism is in place, so any user can join any room by simply entering a room ID.
+The current message history is not persistent after restarting the server.
+
